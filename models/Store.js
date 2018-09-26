@@ -1,8 +1,8 @@
-const mongooose = require("mongoose");
-mongooose.Promise = global.Promise;
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 const slug = require("slugs");
 
-const storeSchema = new mongooose.Schema({
+const storeSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
@@ -10,7 +10,7 @@ const storeSchema = new mongooose.Schema({
   },
   slug: String,
   description: {
-    type: string,
+    type: String,
     trim: true
   },
   tags: [String]

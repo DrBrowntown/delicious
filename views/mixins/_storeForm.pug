@@ -3,7 +3,7 @@ mixin storeForm(store = {})
         lable(for="name") Name
         input(type="text" name="name")
         label(for="description") Description
-        input(type="text" name="description")
+        textarea(name="description")
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Liscensed']
         ul.tags
             each choice in choices

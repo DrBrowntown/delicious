@@ -8,4 +8,5 @@ mixin storeForm(store = {})
         ul.tags
             each choice in choices
                 .tag.tag__choice
-                    input(type="checkbox")
+                    input(type="checkbox" id=choice value=choice name="tags")
+                    label(for=choice)= choice

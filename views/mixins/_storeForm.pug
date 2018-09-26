@@ -1,2 +1,4 @@
 mixin storeForm(store = {})
-    p It works
+    form(action="/add" method="POST" enctype="multipart/form-data" class="card")
+        lable(for="name") Name
+        input(type="text" name="name")

@@ -19,3 +19,7 @@ exports.createStore = async (req, res) => {
   );
   res.redirect(`/store/${store.slug}`);
 };
+
+exports.getStores = (req, res) => {
+  res.render("stores", { title: "Stores" });
+};

@@ -3,4 +3,6 @@ extends layout
 block content
     .inner
         h2= title
-        pre= h.dump(stores)
+        .stores
+            each store in stores
+                h2= store.name

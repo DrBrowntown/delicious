@@ -132,7 +132,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function autocomplete(input, latInput, lngInput) {}
+function autocomplete(input, latInput, lngInput) {
+  console.log(input, latInput, lngInput);
+}
 
 exports.default = autocomplete;
 

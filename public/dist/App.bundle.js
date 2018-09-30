@@ -133,7 +133,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function autocomplete(input, latInput, lngInput) {
-  console.log(input, latInput, lngInput);
+  if (!input) return; // skip this fn from running if there is no input on the page
+  var dropdown = new google.maps.places.Autocomplete(input);
 }
 
 exports.default = autocomplete;

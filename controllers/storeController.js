@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Store = mongoose.model("Store");
+const multer = require("multer");
 
 exports.homePage = (req, res) => {
   console.log(req.name);

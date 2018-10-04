@@ -1,4 +1,6 @@
 extends layout
 
 block content
-    h2 #{store.name}
+    .single
+        .single__hero
+            img.single__image(src=`/uploads/${store.photo || 'store.png'}`)

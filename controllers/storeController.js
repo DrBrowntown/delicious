@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Store = mongoose.model("Store");
 const multer = require("multer");
+const jimp = require("jimp");
+const uuid = require("uuid");
+
 const multerOptions = {
   storage: multer.memoryStorage(),
   fileFilter(req, file, next) {

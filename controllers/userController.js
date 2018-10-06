@@ -33,5 +33,7 @@ exports.validateRegister = (req, res, next) => {
       body: req.body,
       flashes: req.flash()
     });
+    return;
   }
+  next();
 };

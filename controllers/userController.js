@@ -26,7 +26,7 @@ exports.validateRegister = (req, res, next) => {
     .equals(req.body.password);
 
   const errors = req.validationErrors();
-  if (error) {
+  if (errors) {
     req.flash("error", errors.map(err => err.msg));
     res.render("register", {
       title: "Register",

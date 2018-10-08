@@ -30,6 +30,7 @@ router.get("/tags", catchErrors(storeController.getStoresByTag));
 router.get("/tags/:tag", catchErrors(storeController.getStoresByTag));
 
 router.get("/login", userController.loginForm);
+router.post("/login", authController.login);
 router.get("/register", userController.registerForm);
 
 // Validate the registration data

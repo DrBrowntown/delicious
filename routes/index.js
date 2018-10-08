@@ -42,4 +42,6 @@ router.post(
   authController.login
 );
 
+router.get("/login", userController.loginForm);
+
 module.exports = router;

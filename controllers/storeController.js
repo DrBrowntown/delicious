@@ -70,8 +70,8 @@ const confirmOwner = (store, user) => {
 exports.editStore = async (req, res) => {
   // Find store given the id
   const store = await Store.findOne({ _id: req.params.id });
-
   // confirm they are the owner of the store
+  confirmOwner(store, req.user);
   // TODO
   // Render out the edit form so the user can update their store
   res.render("editStore", { title: `Edit ${store.name}`, store: store });

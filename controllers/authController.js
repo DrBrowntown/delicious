@@ -1,4 +1,5 @@
 const passport = require("passport");
+const crypto = require("crypto");
 
 exports.login = passport.authenticate("local", {
   failureRedirect: "/login",
@@ -31,6 +32,7 @@ exports.forgot = async (req, res) => {
     return res.redirect("/login");
   }
   // 2. Set reset tokens and expiry on their account
+  user.resetPasswordToken = 
   // 3. Send them an email with the token
   // 4. Redirect to login page
 };

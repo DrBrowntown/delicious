@@ -13,6 +13,15 @@ const transport = nodemailer.createTransport({
   }
 });
 
+const generateHTML = (filename, options = {}) => {
+  const html = pug.renderFile(
+    `${__dirname}/../views/email/${filename}.pug`,
+    options
+  );
+  console.log(html);
+  return html;
+};
+
 exports.send = async options => {
   const mailOptions = {
     from: `Calvin Brownlee <calvinbrownlee@gmail.com>`,

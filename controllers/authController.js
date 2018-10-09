@@ -84,4 +84,8 @@ exports.update = async (req, res) => {
   }
 
   const setPassword = promisify(user.setPassword, user);
+  await setPassword(req.body.password);
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpires = undefined;
+  const updatedUser = await user.save();
 };

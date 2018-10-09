@@ -48,3 +48,7 @@ exports.forgot = async (req, res) => {
   // 4. Redirect to login page
   res.redirect("/login");
 };
+
+exports.reset = async (req, res) => {
+  res.json(req.params);
+};

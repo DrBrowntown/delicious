@@ -2,6 +2,7 @@ const passport = require("passport");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const promisify = require("es6-promisify");
 
 exports.login = passport.authenticate("local", {
   failureRedirect: "/login",
@@ -81,4 +82,6 @@ exports.update = async (req, res) => {
     req.flash("error", "Password reset is invalid or has expired");
     return res.redirect("/login");
   }
+
+  const setPassword = promisify(user.setPassword, user);
 };

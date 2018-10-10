@@ -10,7 +10,7 @@ function searchResultsHTML(stores) {
     .join("");
 }
 
-const axios = require("axios");
+import axios from "axios";
 
 function typeAhead(search) {
   if (!search) return;

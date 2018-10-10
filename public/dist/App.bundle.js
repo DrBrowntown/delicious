@@ -1017,7 +1017,12 @@ var _os = __webpack_require__(32);
 
 var axios = __webpack_require__(14);
 
-function typeAhead(search) {}
+function typeAhead(search) {
+  if (!search) return;
+
+  var searchInput = search.querySelector('input[name="search"]');
+  var searchResults = search.querySelector(".search_results");
+}
 
 exports.default = typeAhead;
 

@@ -1,5 +1,17 @@
 import { type } from "os";
 
+function searchResultsHTML(stores) {
+  return stores
+    .map(store => {
+      return `
+            <a href="/stores/${store.slug}" class="search__results">
+                <strong>${store.name}</strong>
+            </a>
+        `;
+    })
+    .join("");
+}
+
 const axios = require("axios");
 
 function typeAhead(search) {
@@ -19,7 +31,11 @@ function typeAhead(search) {
     searchResults.style.display = "block";
 
     axios.get(`/api/search?q=${this.value}`).then(res => {
-      console.log(res.data);
+      if (res.data.length) {
+        console.log("There is something to show");
+        const html = searchResultsHTML(res.data);
+        console.log(html);
+      }
     });
   });
 }

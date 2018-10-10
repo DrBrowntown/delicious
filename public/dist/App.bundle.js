@@ -1015,6 +1015,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _os = __webpack_require__(32);
 
+function searchResultsHTML(stores) {
+  return stores.map(function (store) {
+    return "\n            <a href=\"/stores/" + store.slug + "\" class=\"search__results\">\n                <strong>" + store.name + "</strong>\n            </a>\n        ";
+  }).join("");
+}
+
 var axios = __webpack_require__(14);
 
 function typeAhead(search) {
@@ -1034,7 +1040,11 @@ function typeAhead(search) {
     searchResults.style.display = "block";
 
     axios.get("/api/search?q=" + this.value).then(function (res) {
-      console.log(res.data);
+      if (res.data.length) {
+        console.log("There is something to show");
+        var html = searchResultsHTML(res.data);
+        console.log(html);
+      }
     });
   });
 }

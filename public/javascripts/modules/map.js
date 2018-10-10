@@ -13,7 +13,7 @@ function makeMap(mapDiv) {
   // make map
   const map = new google.maps.Map(mapDiv, mapOptions);
   const input = $('[name="geolocate"]');
-  console.log(input);
+  const autocomplete = new google.maps.places.Autocomplete(input);
 }
 
 export default makeMap;

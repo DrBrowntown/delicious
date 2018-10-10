@@ -2,7 +2,7 @@ function searchResultsHTML(stores) {
   return stores
     .map(store => {
       return `
-            <a href="/store/${store.slug}" class="search__results">
+            <a href="/store/${store.slug}" class="search__result">
                 <strong>${store.name}</strong>
             </a>
         `;

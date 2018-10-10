@@ -1032,6 +1032,8 @@ function typeAhead(search) {
   var searchResults = search.querySelector(".search__results");
 
   searchInput.on("input", function () {
+    var _this = this;
+
     // if there is no value, quit
     if (!this.value) {
       searchResults.style.display = "none";
@@ -1040,12 +1042,14 @@ function typeAhead(search) {
 
     // show search results
     searchResults.style.display = "block";
-    searchResults.innerHTML = "";
 
     _axios2.default.get("/api/search?q=" + this.value).then(function (res) {
       if (res.data.length) {
         searchResults.innerHTML = searchResultsHTML(res.data);
+        return;
       }
+      // nothing came back
+      searchResults.innerHTML = "<div=\".search__result\">No results for this " + _this.value + " found!</div>";
     }).catch(function (err) {
       console.error(err);
     });

@@ -149,6 +149,8 @@ exports.mapStores = async (req, res) => {
     }
   };
 
-  const stores = await Store.find(q);
+  const stores = await Store.find(q)
+    .select("slug name description")
+    .limit(10);
   res.json(stores);
 };

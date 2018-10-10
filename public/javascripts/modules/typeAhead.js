@@ -1,10 +1,8 @@
-import { type } from "os";
-
 function searchResultsHTML(stores) {
   return stores
     .map(store => {
       return `
-            <a href="/stores/${store.slug}" class="search__results">
+            <a href="/store/${store.slug}" class="search__results">
                 <strong>${store.name}</strong>
             </a>
         `;
@@ -29,14 +27,19 @@ function typeAhead(search) {
 
     // show search results
     searchResults.style.display = "block";
+    searchResults.innerHTML = "";
 
-    axios.get(`/api/search?q=${this.value}`).then(res => {
-      if (res.data.length) {
-        console.log("There is something to show");
-        const html = searchResultsHTML(res.data);
-        console.log(html);
-      }
-    });
+    axios
+      .get(`/api/search?q=${this.value}`)
+      .then(res => {
+        if (res.data.length) {
+          searchResults.innerHTML = searchResultsHTML(res.data);
+          console.log(searchResults.innerHTML);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
   });
 }
 

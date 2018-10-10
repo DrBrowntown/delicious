@@ -44,7 +44,12 @@ function typeAhead(search) {
 
   // handle keyboard inputs
   searchInput.on("keyup", e => {
-    console.log(e.keyCode);
+    // if they aren't up, down, or enter, ignore
+
+    if (![38, 40, 13].includes(e.keyCode)) {
+      return; // skip
+    }
+    console.log("do something");
   });
 }
 

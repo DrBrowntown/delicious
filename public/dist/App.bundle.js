@@ -1008,7 +1008,6 @@ function typeAhead(search) {
     axios.get("/api/search?q=" + this.value).then(function (res) {
       if (res.data.length) {
         searchResults.innerHTML = searchResultsHTML(res.data);
-        console.log(searchResults.innerHTML);
       }
     }).catch(function (err) {
       console.error(err);
@@ -1022,7 +1021,22 @@ function typeAhead(search) {
     if (![38, 40, 13].includes(e.keyCode)) {
       return; // skip
     }
-    console.log("do something");
+    var activeClass = "search__result--active";
+    var current = search.querySelector("." + activeClass);
+    var items = search.querySelectorAll(".search__result");
+    var next = void 0;
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibliing || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibiling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13 && current.href) {
+      window.location = current.href;
+    }
+    console.log(next);
   });
 }
 

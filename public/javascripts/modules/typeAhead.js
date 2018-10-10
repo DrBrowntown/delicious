@@ -34,7 +34,6 @@ function typeAhead(search) {
       .then(res => {
         if (res.data.length) {
           searchResults.innerHTML = searchResultsHTML(res.data);
-          console.log(searchResults.innerHTML);
         }
       })
       .catch(err => {
@@ -49,7 +48,22 @@ function typeAhead(search) {
     if (![38, 40, 13].includes(e.keyCode)) {
       return; // skip
     }
-    console.log("do something");
+    const activeClass = "search__result--active";
+    const current = search.querySelector(`.${activeClass}`);
+    const items = search.querySelectorAll(".search__result");
+    let next;
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibliing || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibiling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13 && current.href) {
+      window.location = current.href;
+    }
+    console.log(next);
   });
 }
 

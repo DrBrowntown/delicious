@@ -9,7 +9,18 @@ function typeAhead(search) {
   const searchResults = search.querySelector(".search__results");
 
   searchInput.on("input", function() {
-    console.log(this.value);
+    // if there is no value, quit
+    if (!this.value) {
+      searchResults.style.display = "none";
+      return; //stop
+    }
+
+    // show search results
+    searchResults.style.display = "block";
+
+    axios.get(`/api/search?q=${this.value}`).then(res => {
+      console.log(res.data);
+    });
   });
 }
 

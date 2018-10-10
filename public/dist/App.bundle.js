@@ -991,7 +991,9 @@ function typeAhead(search) {
   var searchInput = search.querySelector('input[name="search"]');
   var searchResults = search.querySelector(".search__results");
 
-  console.log(searchInput, searchResults);
+  searchInput.on("input", function () {
+    console.log(this.value);
+  });
 }
 
 exports.default = typeAhead;

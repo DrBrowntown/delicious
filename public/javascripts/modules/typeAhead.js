@@ -1,3 +1,6 @@
+import axios from "axios";
+import dompurify from "dompurify";
+
 function searchResultsHTML(stores) {
   return stores
     .map(store => {
@@ -9,8 +12,6 @@ function searchResultsHTML(stores) {
     })
     .join("");
 }
-
-import axios from "axios";
 
 function typeAhead(search) {
   if (!search) return;
@@ -32,13 +33,17 @@ function typeAhead(search) {
       .get(`/api/search?q=${this.value}`)
       .then(res => {
         if (res.data.length) {
-          searchResults.innerHTML = searchResultsHTML(res.data);
+          searchResults.innerHTML = dompurify.sanitize(
+            searchResultsHTML(res.data)
+          );
           return;
         }
         // nothing came back
-        searchResults.innerHTML = `<div=".search__result">No results for this ${
-          this.value
-        } found!</div>`;
+        searchResults.innerHTML = dompurify.sanitize(
+          `<div=".search__result">No results for this ${
+            this.value
+          } found!</div>`
+        );
       })
       .catch(err => {
         console.error(err);

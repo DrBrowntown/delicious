@@ -1026,17 +1026,21 @@ function typeAhead(search) {
     var items = search.querySelectorAll(".search__result");
     var next = void 0;
     if (e.keyCode === 40 && current) {
-      next = current.nextElementSibliing || items[0];
+      next = current.nextElementSibling || items[0];
     } else if (e.keyCode === 40) {
       next = items[0];
     } else if (e.keyCode === 38 && current) {
-      next = current.previousElementSibiling || items[items.length - 1];
+      next = current.previousElementSibling || items[items.length - 1];
     } else if (e.keyCode === 38) {
       next = items[items.length - 1];
     } else if (e.keyCode === 13 && current.href) {
       window.location = current.href;
+      return;
     }
-    console.log(next);
+    if (current) {
+      current.classList.remove(activeClass);
+    }
+    next.classList.add(activeClass);
   });
 }
 

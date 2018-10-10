@@ -142,7 +142,7 @@ exports.mapStores = async (req, res) => {
       $near: {
         $geometry: {
           type: "Point",
-          coordinates
+          coordinates: coordinates
         },
         $maxDistance: 10000 // 10km
       }
@@ -150,7 +150,7 @@ exports.mapStores = async (req, res) => {
   };
 
   const stores = await Store.find(q)
-    .select("slug name description")
+    .select("slug name description location")
     .limit(10);
   res.json(stores);
 };

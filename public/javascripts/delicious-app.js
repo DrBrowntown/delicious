@@ -13,4 +13,4 @@ typeAhead($(".search"));
 makeMap($("#map"));
 
 const heartForms = $$("form.heart");
-console.log(heartForms);
+heartForms.on("submit", ajaxHeart);

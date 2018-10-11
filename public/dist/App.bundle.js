@@ -1899,7 +1899,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _map2.default)((0, _bling.$)("#map"));
 
 var heartForms = (0, _bling.$$)("form.heart");
-console.log(heartForms);
+heartForms.on("submit", _heart2.default);
 
 /***/ }),
 /* 32 */,

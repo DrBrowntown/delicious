@@ -7,7 +7,8 @@ function ajaxHeart(e) {
   axios
     .post(this.action)
     .then(res => {
-      console.log(res.data);
+      const isHearted = this.heart.classList.toggle("heart__button--hearted");
+      console.log(isHearted);
     })
     .catch(console.error);
 }

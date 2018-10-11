@@ -15,6 +15,7 @@ function loadPlaces(map, lat = 43.2, lng = -79.8) {
     }
     // create bounds
     const bounds = new google.maps.LatLngBounds();
+    const infoWindow = new google.maps.InfoWindow();
 
     const markers = places.map(place => {
       const [placeLng, placeLat] = place.location.coordinates;
@@ -27,6 +28,14 @@ function loadPlaces(map, lat = 43.2, lng = -79.8) {
       marker.place = place;
       return marker;
     });
+
+    // when someone clicks on a marker, show details of that place
+    markers.forEach(marker =>
+      marker.addListener("click", function() {
+        infoWindow.setContent(this.place.name);
+        infoWindow.open(map, this);
+      })
+    );
 
     // zoom the map to fit all the markers
     map.setCenter(bounds.getCenter());

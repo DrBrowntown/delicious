@@ -994,6 +994,8 @@ var _axios = __webpack_require__(1);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _bling = __webpack_require__(3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ajaxHeart(e) {
@@ -1004,7 +1006,7 @@ function ajaxHeart(e) {
   console.log(this);
   _axios2.default.post(this.action).then(function (res) {
     var isHearted = _this.heart.classList.toggle("heart__button--hearted");
-    console.log(isHearted);
+    (0, _bling.$)(".heart-count").textContent = res.data.hearts.length;
   }).catch(console.error);
 }
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { $ } from "./bling";
 
 function ajaxHeart(e) {
   e.preventDefault();
@@ -8,7 +9,7 @@ function ajaxHeart(e) {
     .post(this.action)
     .then(res => {
       const isHearted = this.heart.classList.toggle("heart__button--hearted");
-      console.log(isHearted);
+      $(".heart-count").textContent = res.data.hearts.length;
     })
     .catch(console.error);
 }

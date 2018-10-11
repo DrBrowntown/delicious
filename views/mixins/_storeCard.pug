@@ -4,7 +4,7 @@ mixin storeCard(store = {})
             .store__actions
                 if user
                     .store__action.store__action--heart
-                        form.heart(method="POST" action=`/api/stores/${stores._id}/heart`)
+                        form.heart(method="POST" action=`/api/stores/${store._id}/heart`)
                             button(type="submit" name="heart")
                                 != h.icon('heart')
                 if user && store.author.equals(user._id)

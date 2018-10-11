@@ -14,10 +14,12 @@ function loadPlaces(map, lat = 43.2, lng = -79.8) {
       return;
     }
     // create bounds
+    const bounds = new google.maps.LatLngBounds();
 
     const markers = places.map(place => {
       const [placeLng, placeLat] = place.location.coordinates;
       const position = { lat: placeLat, lng: placeLng };
+      bounds.extend(position);
       const marker = new google.maps.Marker({
         map: map,
         position: position
@@ -25,6 +27,9 @@ function loadPlaces(map, lat = 43.2, lng = -79.8) {
       marker.place = place;
       return marker;
     });
+
+    // zoom the map to fit all the markers
+    map.setCenter(bounds.getCenter());
   });
 }
 

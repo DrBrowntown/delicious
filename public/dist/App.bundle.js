@@ -2745,6 +2745,7 @@ function loadPlaces(map) {
       return;
     }
     // create bounds
+    var bounds = new google.maps.LatLngBounds();
 
     var markers = places.map(function (place) {
       var _place$location$coord = _slicedToArray(place.location.coordinates, 2),
@@ -2752,6 +2753,7 @@ function loadPlaces(map) {
           placeLat = _place$location$coord[1];
 
       var position = { lat: placeLat, lng: placeLng };
+      bounds.extend(position);
       var marker = new google.maps.Marker({
         map: map,
         position: position
@@ -2759,6 +2761,9 @@ function loadPlaces(map) {
       marker.place = place;
       return marker;
     });
+
+    // zoom the map to fit all the markers
+    map.setCenter(bounds.getCenter());
   });
 }
 
@@ -2775,4 +2780,4 @@ exports.default = makeMap;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=App.bundle.js.map
+//# sourceMappingURL=App.bundle.js.map.map

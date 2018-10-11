@@ -55,6 +55,7 @@ router.post(
   catchErrors(authController.update)
 );
 router.get("/map", storeController.mapPage);
+router.get("/hearts", catchErrors(storeController.getHearts));
 
 /*
 API

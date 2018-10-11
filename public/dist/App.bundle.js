@@ -2785,10 +2785,14 @@ function makeMap(mapDiv) {
   loadPlaces(map);
   var input = (0, _bling.$)('[name="geolocate"]');
   var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.addListener("place_changed", function () {
+    var place = autocomplete.getPlace();
+    console.log(place);
+  });
 }
 
 exports.default = makeMap;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=App.bundle.js.map.map
+//# sourceMappingURL=App.bundle.js.map

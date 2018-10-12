@@ -91,9 +91,9 @@ storeSchema.statics.getTopStores = function() {
         foreignField: "store",
         as: "reviews"
       }
-    }
+    },
     // filter for only items that have 2 or more reviews
-
+    { $match: { "reviews.1": { $exists: true } } }
     // add the average reviews field
 
     // sort it by our new field, highest reviews first

@@ -16,4 +16,4 @@ block content
                     td #{i + 1}
                     td: a(href=`/stores/${store.slug}`)= store.name
                     td= store.reviews.length
-                    td #{store.averageRating}
+                    td #{Math.round(store.averageRating * 10) /10} / 5

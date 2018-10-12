@@ -1,6 +1,8 @@
 mixin review(review)
     .review__header
         .review__author
+            img.avatar(src=review.author.gravatar)
+            p= review.author.name
         .review__stars
         time.review__time
     .review__body

@@ -101,8 +101,9 @@ storeSchema.statics.getTopStores = function() {
       }
     },
     // sort it by our new field, highest reviews first
-    { $sort: { averageRating: -1 } }
+    { $sort: { averageRating: -1 } },
     // limit to at most 10
+    { $limit: 10 }
   ]);
 };
 

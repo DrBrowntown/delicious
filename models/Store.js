@@ -82,7 +82,24 @@ storeSchema.statics.getTagsList = function() {
 };
 
 storeSchema.statics.getTopStores = function() {
-  return this.aggregate([]);
+  return this.aggregate([
+    // Lookup stores and populate their reviews
+    {
+      $lookup: {
+        from: "reviews",
+        localField: "_id",
+        foreignField: "store",
+        as: "reviews"
+      }
+    }
+    // filter for only items that have 2 or more reviews
+
+    // add the average reviews field
+
+    // sort it by our new field, highest reviews first
+
+    // limit to at most 10
+  ]);
 };
 
 // find reviews where the stores _id property === reviews store property

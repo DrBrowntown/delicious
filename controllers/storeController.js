@@ -62,7 +62,8 @@ exports.getStores = async (req, res) => {
   // Query the database for list of all stores
   const storesPromise = Store.find()
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .sort({ created: "desc" });
 
   const countPromise = Store.count();
 

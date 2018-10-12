@@ -3,7 +3,8 @@ mixin review(review)
         .review__author
             img.avatar(src=review.author.gravatar)
             p= review.author.name
-        .review__stars
+        .review__stars(title=`Rated ${review.rating} out of 5 stars`)
+            = `★`.repeat(review.rating)
         time.review__time
     .review__body
     p= review.text
